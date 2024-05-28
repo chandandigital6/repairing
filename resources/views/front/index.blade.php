@@ -221,41 +221,61 @@
                     <div class="col-lg-6 quote-form" data-parallax="scroll" data-image-src="img/carousel-2.jpg">
                         <div class="h-100 px-4 px-sm-5 pe-lg-0 wow fadeIn" data-wow-delay="0.5s">
                             <div class="bg-white p-4 p-sm-5">
+                                @if(session('error'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ session('error') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
+                                @if(session('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ session('success') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+                                <form action="{{route('appointment.store')}}" method="post" >
+                                    @csrf
                                 <div class="row g-3">
                                     <div class="col-sm-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="gname" placeholder="Gurdian Name">
-                                            <label for="gname">Your Name</label>
+                                            <input type="text" class="form-control" name="name" placeholder="Gurdian Name">
+                                            <label for="name">Your Name</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" id="gmail" placeholder="Gurdian Email">
-                                            <label for="gmail">Your Email</label>
+                                            <input type="email" class="form-control" name="email" placeholder="Gurdian Email">
+                                            <label for="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="cname" placeholder="Child Name">
-                                            <label for="cname">Your Mobile</label>
+                                            <input type="text" class="form-control" name="number" placeholder="Contact number">
+                                            <label for="number">Your Mobile</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="cage" placeholder="Child Age">
-                                            <label for="cage">Service Type</label>
+                                            <input type="text" class="form-control" name="service" placeholder="Service ">
+                                            <label for="service">Service Type</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 80px"></textarea>
+                                            <textarea class="form-control" placeholder="Leave a message here" name="msg" style="height: 80px"></textarea>
                                             <label for="message">Message</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary py-3 px-5" type="submit">Get A Free Quote</button>
+                                        <button class="btn btn-primary py-3 px-5 w-100" type="submit">Get A Free Quote</button>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
